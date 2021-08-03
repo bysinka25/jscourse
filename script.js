@@ -1,0 +1,16 @@
+"use strict";
+let money = 50000;
+console.log(typeof money);
+let income = "20000";
+console.log(typeof income);
+let addExpenses = "Food Internet taxi entertainment";
+console.log(addExpenses.length);
+console.log(addExpenses.toLowerCase());
+console.log(addExpenses.split(" "));
+let deposit = true;
+console.log(typeof deposit);
+let mission = 400000;
+let period = 12;
+console.log(mission, period);
+let budgetDay = 50000 / 30;
+console.log(budgetDay);
