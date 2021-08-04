@@ -1,16 +1,15 @@
 "use strict";
-let money = 50000;
-console.log(typeof money);
-let income = "20000";
-console.log(typeof income);
-let addExpenses = "Food Internet taxi entertainment";
-console.log(addExpenses.length);
-console.log(addExpenses.toLowerCase());
-console.log(addExpenses.split(" "));
-let deposit = true;
-console.log(typeof deposit);
-let mission = 400000;
-let period = 12;
-console.log(mission, period);
-let budgetDay = 50000 / 30;
+const money = 50000,
+  income = "20000",
+  addExpenses = "FOOD INTERNET TAXI ENTERTAINMENT",
+  deposit = true,
+  mission = 400000,
+  period = 12,
+  budgetDay = money / 30;
 console.log(budgetDay);
+console.log(typeof money);
+console.log(typeof income);
+console.log(addExpenses.length);
+console.log(addExpenses.toLowerCase().split(" "));
+console.log(typeof deposit);
+console.log(mission, period);
