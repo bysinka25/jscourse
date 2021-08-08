@@ -11,8 +11,8 @@ let money = prompt("Ваш месячный доход?"),
   amount2 = prompt("Во сколько это обойдется?"),
   budgetMonth = money - amount1 - amount2,
   mission = prompt("Сколько вы хотите накопить?"),
-  period = mission / budgetMonth,
-  budgetDay = money / 30;
+  period = Math.ceil(mission / budgetMonth),
+  budgetDay = Math.floor(budgetMonth / 30);
 console.log(money);
 console.log(addExpenses);
 console.log(deposit);
