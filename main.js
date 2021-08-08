@@ -13,16 +13,16 @@ let money = prompt("Ваш месячный доход?"),
   mission = prompt("Сколько вы хотите накопить?"),
   period = Math.ceil(mission / budgetMonth),
   budgetDay = Math.floor(budgetMonth / 30);
-console.log(money);
-console.log(addExpenses);
-console.log(deposit);
+console.log(typeof money);
+console.log("Ваши расходы" + addExpenses);
+console.log(typeof deposit);
 console.log(expenses1);
 console.log(amount1);
 console.log(expenses2);
 console.log(amount2);
-console.log(budgetMonth);
-console.log(mission);
-console.log(period);
+console.log("Ваш дневной бюджет:" + budgetMonth);
+console.log("Вы хотите на копить:" + mission);
+console.log("Вы накопите за: " + period);
 Math.ceil(budgetMonth);
 Math.floor(budgetDay);
 if (budgetDay > 1200) {
