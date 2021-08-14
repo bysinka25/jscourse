@@ -1,4 +1,5 @@
 "use strict";
+
 const money = prompt("Ваш месячный доход?"),
   income = "фриланс",
   addExpenses = prompt(
@@ -11,8 +12,12 @@ const money = prompt("Ваш месячный доход?"),
   expenses2 = prompt("Введите обязательную статью расходов?"),
   amount2 = +prompt("Во сколько это обойдется?"),
   mission = +prompt("Сколько вы хотите накопить?"),
-  period = Math.ceil(mission / (money - amount1 - amount2)),
-  budgetDay = Math.floor(getAccumulatedMonth() / 30);
+  period = Math.ceil(mission / (money - amount1 - amount2));
+function getAccumulatedMonth() {
+  return money - (amount1 - amount2);
+}
+getAccumulatedMonth();
+const budgetDay = Math.floor(getAccumulatedMonth() / 30);
 const showTypeOf = function (data) {
   console.log(data, typeof data);
 };
@@ -47,17 +52,12 @@ function getExpensesMonth() {
 }
 getExpensesMonth();
 
-function getAccumulatedMonth() {
-  return money - (amount1 - amount2);
-}
-getAccumulatedMonth();
-
-const accumulatedMonth = function () {
-  res = money - amount1 - amount2;
-};
-accumulatedMonth();
-
 function getTargetMonth() {
-  return Math.ceil(mission / res);
+  return Math.ceil(mission / getAccumulatedMonth());
 }
 getTargetMonth();
+
+const accumulatedMonth = function () {
+  return money - (amount1 - amount2);
+};
+accumulatedMonth();
