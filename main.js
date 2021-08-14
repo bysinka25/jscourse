@@ -6,7 +6,7 @@ const isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
 let expenses1, expenses2, money;
-let getExpensesMonth = function () {
+const getExpensesMonth = function () {
   let sum = 0;
   for (let i = 0; i < 2; i++) {
     if (i === 0) {
@@ -19,14 +19,16 @@ let getExpensesMonth = function () {
   console.log(sum);
   return !isNumber(sum);
 };
-let expensesAmount = getExpensesMonth();
-
-do {
-  money = prompt("Ваш месячный доход?");
-} while (!isNumber(money));
-{
-  money = prompt("Ваш месячный доход?");
+const expensesAmount = getExpensesMonth();
+function start() {
+  do {
+    money = prompt("Ваш месячный доход?");
+  } while (!isNumber(money));
+  {
+    money = prompt("Ваш месячный доход?");
+  }
 }
+start();
 function getAccumulatedMonth() {
   return money - (amount1 - amount2);
 }
@@ -38,6 +40,6 @@ const getTargetMonth = function () {
   } else if (mission / money > 0) {
     console.log("Цель будет достигнута");
   }
-  return Math.ceil(mission / money);
+  console.log(Math.ceil(mission / money));
 };
 getTargetMonth();
