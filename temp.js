@@ -1,5 +1,5 @@
 "use strict";
-let money = prompt("Ваш месячный доход?"),
+const money = prompt("Ваш месячный доход?"),
   income = "фриланс",
   addExpenses = prompt(
     "Перечислите возможные расходы за рассчитываемый период через запятую",
@@ -11,10 +11,9 @@ let money = prompt("Ваш месячный доход?"),
   expenses2 = prompt("Введите обязательную статью расходов?"),
   amount2 = +prompt("Во сколько это обойдется?"),
   mission = +prompt("Сколько вы хотите накопить?"),
-  res,
   period = Math.ceil(mission / (money - amount1 - amount2)),
-  budgetDay = Math.floor(res / 30);
-let showTypeOf = function (data) {
+  budgetDay = Math.floor(getAccumulatedMonth() / 30);
+const showTypeOf = function (data) {
   console.log(data, typeof data);
 };
 showTypeOf(money);
@@ -43,30 +42,22 @@ if (budgetDay <= -1) {
   alert("Что-то пошло не так");
 }
 
-let sum;
 function getExpensesMonth() {
-  sum = amount1 + amount2;
+  return amount1 + amount2;
 }
 getExpensesMonth();
-console.log(sum);
 
 function getAccumulatedMonth() {
-  res = money - amount1 - amount2;
+  return money - (amount1 - amount2);
 }
 getAccumulatedMonth();
-console.log(res);
 
 const accumulatedMonth = function () {
   res = money - amount1 - amount2;
 };
 accumulatedMonth();
 
-let per;
 function getTargetMonth() {
-  per = Math.ceil(mission / res);
+  return Math.ceil(mission / res);
 }
 getTargetMonth();
-console.log(per);
-
-function getStatusIncome() {}
-getStatusIncome();
