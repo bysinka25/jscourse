@@ -1,12 +1,15 @@
 "use strict";
-let expenses, money;
-let mission = +prompt("Cколько вы хотите накопить?"),
-  amount2,
-  amount1;
+let money, expenses;
 const isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
-let appData = {
+function start() {
+  do {
+    money = prompt("Ваш месячный доход?");
+  } while (!isNumber(money));
+}
+start();
+const appData = {
   income: {},
   addIncome: [],
   expenses: {},
@@ -14,6 +17,7 @@ let appData = {
   deposit: false,
   mission: 50000,
   period: 12,
+  money,
   budgetDay: 0,
   budgetMonth: 0,
   expensesMonth: 0,
@@ -42,21 +46,15 @@ let appData = {
   getTargetMonth: function getTargetMonth() {
     if (appData.mission / appData.money < 0) {
       console.log("Цель будет не достигнута");
-    } else if (appData.mission / appData.money > 0) {
+    } else {
       console.log("Цель будет достигнута");
     }
   },
-  start: function start() {
-    do {
-      money = prompt("Ваш месячный доход?");
-    } while (!isNumber(money));
-  },
 };
-const asking = appData.asking();
-const getExpensesMonth = appData.getExpensesMonth();
-const getBudget = appData.getBudget();
-const getTargetMonth = appData.getTargetMonth();
-const start = appData.start();
+appData.asking();
+appData.getExpensesMonth();
+appData.getBudget();
+appData.getTargetMonth();
 console.log("Расходы за месяц: " + (appData.expenses + appData.expenses));
 console.log("За какой период будет достигнута цель = " + appData.period);
 console.log("Ваш месячный доход " + money);
