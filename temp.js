@@ -2,37 +2,37 @@
 const isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
-function number() {
+function loopBack() {
   let showNumber = 10;
-  let n;
-  n = prompt("Введите число от 1 до 99");
-  if (n === 10) {
-    console.log("вы победили" + n);
-    prompt("Вы победили");
-    return;
-  }
-  if (n === null) {
-    alert("Пока");
-    console.log("отмена" + n);
-    parseInt(n);
-    return;
-  }
+  function number() {
+    let n;
+    n = prompt("Введите число от 1 до 99");
+    if (parseInt(n) === 10) {
+      console.log("вы победили" + n);
+      alert("Вы победили");
+      return;
+    }
+    if (parseInt(n) === null) {
+      alert("Пока");
+      console.log("отмена" + n);
+      return;
+    }
 
-  if (n < showNumber) {
-    alert("Загаданное число больше");
-    number();
-    parseInt(n);
-  }
-  if (n > showNumber) {
-    alert("Загаданное число меньше");
-    number();
-    parseInt(n);
-  }
+    if (parseInt(n) < showNumber) {
+      alert("Загаданное число больше");
+      number();
+    }
+    if (parseInt(n) > showNumber) {
+      alert("Загаданное число меньше");
+      number();
+    }
 
-  if (!isNumber(n)) {
-    alert("Введите число!");
-    console.log("введите число" + n);
-    number();
+    if (!isNumber(n)) {
+      alert("Введите число!");
+      console.log("введите число" + n);
+      number();
+    }
   }
+  number();
 }
-number();
+loopBack();
