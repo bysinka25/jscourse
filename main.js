@@ -1,0 +1,34 @@
+"use strict";
+console.log(document.querySelector("#start"));
+console.log(document.querySelector("#cancel"));
+const salary = document.getElementsByClassName(".salary-amount");
+const come = document.getElementsByClassName(".income-amount");
+const expensesAmount = document.getElementsByClassName(".expenses-amount");
+const add = document.getElementsByClassName(".additional_expenses-item");
+const plus1 = document.getElementsByTagName(".income_add");
+const plus2 = document.getElementsByTagName(".expenses_add");
+const checkbox = document.querySelector("#deposit-check");
+const item = document.querySelectorAll(".additional_income-item");
+const budgetDay = document.getElementsByClassName(".budget_day-value");
+const expenses = document.getElementsByClassName(".expenses_month-value");
+const additional = document.getElementsByClassName(".additional_income-value");
+const additionalExpenses = document.getElementsByClassName(
+  ".additional_expenses-value"
+);
+const income = document.getElementsByClassName(".income_period-value");
+const target = document.getElementsByClassName(".target_month-value");
+const period = document.getElementsByClassName(".period-select");
+console.log(plus1);
+console.log(plus2);
+console.log(checkbox);
+console.log(budgetDay);
+console.log(expenses);
+console.log(additional);
+console.log(additionalExpenses);
+console.log(income);
+console.log(target);
+console.log(salary);
+console.log(come);
+console.log(expensesAmount);
+console.log(add);
+console.log(period);
