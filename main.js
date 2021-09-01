@@ -3,11 +3,11 @@ let money, expenses;
 const isNumber = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
-function start() {
+const start = function () {
   do {
     money = prompt("Ваш месячный доход?");
   } while (!isNumber(money));
-}
+};
 start();
 const appData = {
   income: {},
@@ -30,16 +30,19 @@ const appData = {
         "Какой у вас дополнительный заработок?",
         "Кручу роллы"
       );
-      if (isNumber(itemIncome)) {
+      while (isNumber(itemIncome)) {
         alert("Только буквы!");
-        this.asking();
+        itemIncome = prompt(
+          "Какой у вас дополнительный заработок?",
+          "Кручу роллы"
+        );
       }
 
       let cashIncome = prompt("Сколько зарабатываете на этом?", 30000);
       appData.income[itemIncome] = cashIncome;
-      if (!isNumber(cashIncome)) {
+      while (!isNumber(cashIncome)) {
         alert("не явлется числом");
-        this.asking();
+        cashIncome = prompt("Сколько зарабатываете на этом?", 30000);
       }
     }
     let addExpenses = prompt("Перечислите возможные расходы");
@@ -52,13 +55,17 @@ const appData = {
     }
     for (let i = 0; i < 2; i++) {
       appData.expenses = prompt("Введите обязательную статью расходов?");
-      if (isNumber(appData.expenses[0])) {
+      while (isNumber(appData.expenses[0])) {
         alert("Только буквы!");
-        this.asking();
+        appData.expenses = prompt("Введите обязательную статью расходов?");
       }
       do {
         appData.expenses = +prompt("Во сколько это обойдется?");
       } while (!isNumber(appData.expenses));
+      {
+        alert("не явлется числом");
+        appData.expenses = +prompt("Во сколько это обойдется?");
+      }
     }
     console.log(appData.expenses);
     console.log(appData.addExpenses);
@@ -84,15 +91,15 @@ const appData = {
   getInfoDeposit: function () {
     if (appData.deposit) {
       appData.percentDeposit = prompt("Какой годовой процент", 10);
-      if (!isNumber(appData.percentDeposit)) {
+      while (!isNumber(appData.percentDeposit)) {
         alert("Только цифры!");
-        this.getInfoDeposit();
+        appData.percentDeposit = prompt("Какой годовой процент", 10);
       }
       appData.moneyDeposit = prompt("Какая сумма заложена", 50000);
     }
-    if (!isNumber(appData.moneyDeposit)) {
+    while (!isNumber(appData.moneyDeposit)) {
       alert("Только цифры!");
-      this.getInfoDeposit();
+      appData.moneyDeposit = prompt("Какая сумма заложена", 50000);
     }
   },
   calcSavedMoney: function () {
