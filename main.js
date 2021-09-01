@@ -31,7 +31,6 @@ const appData = {
         "Кручу роллы"
       );
       while (isNumber(itemIncome)) {
-        alert("Только буквы!");
         itemIncome = prompt(
           "Какой у вас дополнительный заработок?",
           "Кручу роллы"
@@ -41,7 +40,6 @@ const appData = {
       let cashIncome = prompt("Сколько зарабатываете на этом?", 30000);
       appData.income[itemIncome] = cashIncome;
       while (!isNumber(cashIncome)) {
-        alert("не явлется числом");
         cashIncome = prompt("Сколько зарабатываете на этом?", 30000);
       }
     }
@@ -56,14 +54,12 @@ const appData = {
     for (let i = 0; i < 2; i++) {
       appData.expenses = prompt("Введите обязательную статью расходов?");
       while (isNumber(appData.expenses[0])) {
-        alert("Только буквы!");
         appData.expenses = prompt("Введите обязательную статью расходов?");
       }
       do {
         appData.expenses = +prompt("Во сколько это обойдется?");
       } while (!isNumber(appData.expenses));
       {
-        alert("не явлется числом");
         appData.expenses = +prompt("Во сколько это обойдется?");
       }
     }
@@ -92,13 +88,11 @@ const appData = {
     if (appData.deposit) {
       appData.percentDeposit = prompt("Какой годовой процент", 10);
       while (!isNumber(appData.percentDeposit)) {
-        alert("Только цифры!");
         appData.percentDeposit = prompt("Какой годовой процент", 10);
       }
       appData.moneyDeposit = prompt("Какая сумма заложена", 50000);
     }
     while (!isNumber(appData.moneyDeposit)) {
-      alert("Только цифры!");
       appData.moneyDeposit = prompt("Какая сумма заложена", 50000);
     }
   },
