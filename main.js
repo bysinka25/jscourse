@@ -1,4 +1,5 @@
 "use strict";
+const expensesItems = document.querySelectorAll(".expenses-items")[0];
 const button1 = document.querySelectorAll("button");
 const cancel = document.querySelector("#cancel");
 const button = document.querySelector("#start");
@@ -78,6 +79,8 @@ const appData = {
     }
     appData.budget = salary.value;
     console.log("salary.value: ", salary.value);
+
+    appData.getExpenses();
     //     appData.getExpensesMonth();
     // appData.getBudget();
     // appData.getTargetMonth();
@@ -128,27 +131,35 @@ const appData = {
       console.log(key + ":" + expenses[key]);
     }
   },
+  getExpenses: function () {
+    expensesItems.forEach(function (item) {
+      let itemExpenses = item.querySelector(".expenses-title");
+      let cashExpenses = item.querySelector(".expenses-amount");
+      if (itemExpenses !== "" && cashExpenses !== "") {
+        appData.expenses[itemExpenses] = cashExpenses;
+      }
+    });
+  },
   getBudget: function getBudget() {
     // console.log(appData.budgetMonth + appData.budgetDay);
     appData.budgetMonth = appData.budget - appData.expensesMonth;
     appData.budgetDay = Math.floor(appData.budgetMonth / 30);
   },
   addExpensesBlock: function () {
-    let expensesItems = document.querySelectorAll(".expenses-items")[0];
-    let cloneExpensesItem = expensesItems[0].cloneNode(true);
-    expensesItems[0].parentNode.insertBefore(cloneExpensesItem, plus1);
     console.log(expensesItems.parentNode);
+    let cloneExpensesItem = expensesItems[0].cloneNode(true);
+    expensesItems[0].parentNode.insertBefore(cloneExpensesItem, plus2);
     if (expensesItems.length === 3) {
-      plus1.style.display = "none";
+      plus2.style.display = "none";
     }
   },
-  getTargetMonth: function getTargetMonth() {
-    if (appData.mission / appData.money < 0) {
-      console.log("Цель будет не достигнута");
-    } else {
-      console.log("Цель будет достигнута");
-    }
-  },
+  // getTargetMonth: function getTargetMonth() {
+  //   if (appData.mission / appData.money < 0) {
+  //     console.log("Цель будет не достигнута");
+  //   } else {
+  //     console.log("Цель будет достигнута");
+  //   }
+  // },
   getInfoDeposit: function () {
     if (appData.deposit) {
       appData.percentDeposit = prompt("Какой годовой процент", 10);
