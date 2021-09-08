@@ -42,24 +42,13 @@ const appData = {
   budgetMonth: 0,
   expensesMonth: 0,
   reset: function () {
-    this.income = {};
-    this.addIncome = [];
-    this.expenses = {};
-    this.addExpenses = [];
-    this.deposit = false;
-    this.percentDeposit = 0;
-    this.moneyDeposit = 0;
-    this.budget = 0;
-    this.incomeMonth = 0;
-    this.budgetDay = 0;
-    this.budgetMonth = 0;
-    this.expensesMonth = 0;
     const inputDis = document.querySelectorAll("input");
     const resultInputAll = document.querySelectorAll(
-      ". data input[type = text]"
+      ".result input[type = text]"
     );
     inputDis.forEach(function (elem) {
-      elem.value = "";
+      console.log(elem);
+      elem.value = 0;
       elem.disabled = false;
       const periodSelect = document.querySelectorAll("period-select");
       periodSelect.value = "0";
@@ -75,6 +64,18 @@ const appData = {
       expensesItems[i].parentNode.removeChild(expensesItems[1]);
       expensesPlus.style.display = "block";
     }
+    this.income = {};
+    this.addIncome = [];
+    this.expenses = {};
+    this.addExpenses = [];
+    this.deposit = false;
+    this.percentDeposit = 0;
+    this.moneyDeposit = 0;
+    this.budget = 0;
+    this.incomeMonth = 0;
+    this.budgetDay = 0;
+    this.budgetMonth = 0;
+    this.expensesMonth = 0;
   },
   start: function () {
     if (budgetMonthValue.value > 0) {
@@ -214,10 +215,6 @@ const appData = {
 // object end  --------------------------------------------------------------
 
 startButton.addEventListener("click", function () {
-  startButton.style.display = "none";
-  if (salaryAmount.value !== "") {
-    appData.start();
-  }
   const inputDis = document.querySelectorAll("input");
   let array = [inputDis];
   inputDis.forEach(function (elem) {
@@ -225,17 +222,22 @@ startButton.addEventListener("click", function () {
     elem.disabled = true;
   });
   console.log(array);
-  cancelButton.style.display = "block";
+  startButton.style.display = "none";
+  if (salaryAmount.value !== +"") {
+    cancelButton.style.display = "block";
+    appData.start();
+  }
 });
 cancelButton.addEventListener("click", function () {
   cancelButton.style.display = "none";
   startButton.style.display = "block";
-  const inputDis = document.querySelectorAll("input");
-  let array = [inputDis];
-  inputDis.forEach(function (elem) {
-    console.log(elem);
-    elem.disabled = false;
-  });
+  // const inputDis = document.querySelectorAll("input");
+  // let array = [inputDis];
+  // inputDis.forEach(function (elem) {
+  //   console.log(elem);
+  //   elem.disabled = false;
+  // });
+  console.log(appData.budget);
   this.reset();
 });
 
