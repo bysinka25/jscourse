@@ -42,50 +42,53 @@ const appData = {
   budgetMonth: 0,
   expensesMonth: 0,
   reset: function () {
-    const inputDis = document.getElementsByTagName("input")[0];
-    const inputDis1 = document.getElementsByTagName("input")[1];
-    const inputDis2 = document.getElementsByTagName("input")[2];
-    const inputDis3 = document.getElementsByTagName("input")[3];
-    const inputDis4 = document.getElementsByTagName("input")[4];
-    const inputDis5 = document.getElementsByTagName("input")[5];
-    const inputDis6 = document.getElementsByTagName("input")[6];
-    const inputDis7 = document.getElementsByTagName("input")[7];
-    const inputDis8 = document.getElementsByTagName("input")[8];
-    const inputDis11 = document.getElementsByTagName("input")[11];
-    const inputDis12 = document.getElementsByTagName("input")[12];
-    inputDis.value = "";
-    inputDis1.value = "";
-    inputDis2.value = "";
-    inputDis3.value = "";
-    inputDis4.value = "";
-    inputDis5.value = "";
-    inputDis6.value = "";
-    inputDis7.value = "";
-    inputDis8.value = "";
-    inputDis11.value = "";
-    inputDis12.value = "";
+    this.income = {};
+    this.addIncome = [];
+    this.expenses = {};
+    this.addExpenses = [];
+    this.deposit = false;
+    this.percentDeposit = 0;
+    this.moneyDeposit = 0;
+    this.budget = 0;
+    this.incomeMonth = 0;
+    this.budgetDay = 0;
+    this.budgetMonth = 0;
+    this.expensesMonth = 0;
+    const inputDis = document.querySelectorAll("input");
+    const resultInputAll = document.querySelectorAll(
+      ". data input[type = text]"
+    );
+    inputDis.forEach(function (elem) {
+      elem.value = "";
+      elem.disabled = false;
+      const periodSelect = document.querySelectorAll("period-select");
+      periodSelect.value = "0";
+    });
+    resultInputAll.forEach(function (elem) {
+      elem.value = "";
+    });
+    for (let i = 1; 1 < incomeItems.length; i++) {
+      incomeItems[i].parentNode.removeChild(incomeItems[1]);
+      incomePlus.style.display = "block";
+    }
+    for (let i = 1; 1 < expensesItems.length; i++) {
+      expensesItems[i].parentNode.removeChild(expensesItems[1]);
+      expensesPlus.style.display = "block";
+    }
   },
   start: function () {
     if (budgetMonthValue.value > 0) {
       return;
     }
     appData.budget = +salaryAmount.value;
-    this.getExpenses.bind(this);
-    this.getIncome.bind(this);
-    this.getExpensesMonth.bind(this);
-    this.getAddExpensions.bind(this);
-    this.getAddIncome.bind(this);
-    this.getBudget.bind(this);
-    this.showResult.bind(this);
-    // appData.getExpenses();
-    // appData.getIncome();
-    // appData.getExpensesMonth();
-    // appData.getAddExpensions();
-    // appData.getAddIncome();
-    // appData.getBudget();
-    // appData.showResult();
+    this.getExpenses();
+    this.getIncome();
+    this.getExpensesMonth();
+    this.getAddExpensions();
+    this.getAddIncome();
+    this.getBudget();
+    this.showResult();
     console.log(this);
-    console.log(appData.start.bind(appData));
   },
   showResult: function () {
     budgetMonthValue.value = this.budgetMonth;
@@ -97,9 +100,13 @@ const appData = {
     additionalIncomeValue.value = this.addIncome.join(", ");
     targetMonthValue.value = this.getTargetMonth();
     incomePeriodValue.value = this.calcPeriod();
-    range.addEventListener("input", function () {
-      incomePeriodValue.value = this.calcPeriod();
-    });
+    range.addEventListener(
+      "input",
+      function () {
+        incomePeriodValue.value = this.calcPeriod();
+      },
+      bind(this)
+    );
     console.log(this);
   },
   addExpensesBlock: function () {
@@ -211,61 +218,25 @@ startButton.addEventListener("click", function () {
   if (salaryAmount.value !== "") {
     appData.start();
   }
-  const inputDis = document.getElementsByTagName("input")[0];
-  const inputDis1 = document.getElementsByTagName("input")[1];
-  const inputDis2 = document.getElementsByTagName("input")[2];
-  const inputDis3 = document.getElementsByTagName("input")[3];
-  const inputDis4 = document.getElementsByTagName("input")[4];
-  const inputDis5 = document.getElementsByTagName("input")[5];
-  const inputDis6 = document.getElementsByTagName("input")[6];
-  const inputDis7 = document.getElementsByTagName("input")[7];
-  const inputDis8 = document.getElementsByTagName("input")[8];
-  const inputDis11 = document.getElementsByTagName("input")[11];
-  const inputDis12 = document.getElementsByTagName("input")[12];
-  inputDis.disabled = true;
-  inputDis1.disabled = true;
-  inputDis2.disabled = true;
-  inputDis3.disabled = true;
-  inputDis4.disabled = true;
-  inputDis5.disabled = true;
-  inputDis6.disabled = true;
-  inputDis7.disabled = true;
-  inputDis8.disabled = true;
-  inputDis11.disabled = true;
-  inputDis12.disabled = true;
-  // inputDis.forEach(function(entry)){
-  //   entry.addEventListener("click", function(){})}
-
-  // }
+  const inputDis = document.querySelectorAll("input");
+  let array = [inputDis];
+  inputDis.forEach(function (elem) {
+    console.log(elem);
+    elem.disabled = true;
+  });
+  console.log(array);
   cancelButton.style.display = "block";
-  console.log(inputDis);
 });
 cancelButton.addEventListener("click", function () {
   cancelButton.style.display = "none";
   startButton.style.display = "block";
-  const inputDis = document.getElementsByTagName("input")[0];
-  const inputDis1 = document.getElementsByTagName("input")[1];
-  const inputDis2 = document.getElementsByTagName("input")[2];
-  const inputDis3 = document.getElementsByTagName("input")[3];
-  const inputDis4 = document.getElementsByTagName("input")[4];
-  const inputDis5 = document.getElementsByTagName("input")[5];
-  const inputDis6 = document.getElementsByTagName("input")[6];
-  const inputDis7 = document.getElementsByTagName("input")[7];
-  const inputDis8 = document.getElementsByTagName("input")[8];
-  const inputDis11 = document.getElementsByTagName("input")[11];
-  const inputDis12 = document.getElementsByTagName("input")[12];
-  inputDis.disabled = false;
-  inputDis1.disabled = false;
-  inputDis2.disabled = false;
-  inputDis3.disabled = false;
-  inputDis4.disabled = false;
-  inputDis5.disabled = false;
-  inputDis6.disabled = false;
-  inputDis7.disabled = false;
-  inputDis8.disabled = false;
-  inputDis11.disabled = false;
-  inputDis12.disabled = false;
-  appData.reset();
+  const inputDis = document.querySelectorAll("input");
+  let array = [inputDis];
+  inputDis.forEach(function (elem) {
+    console.log(elem);
+    elem.disabled = false;
+  });
+  this.reset();
 });
 
 expensesPlus.addEventListener("click", appData.addExpensesBlock);
@@ -304,4 +275,4 @@ const arr = appData.addExpenses.map(function (val) {
 // additional_income - item;
 // income - amount;
 // income - title;
-// salaryAmount;
+// salay
