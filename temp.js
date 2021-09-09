@@ -48,7 +48,7 @@ const appData = {
     );
     inputDis.forEach(function (elem) {
       console.log(elem);
-      elem.value = 0;
+      elem.value = "";
       elem.disabled = false;
       const periodSelect = document.querySelectorAll("period-select");
       periodSelect.value = "0";
@@ -238,7 +238,7 @@ cancelButton.addEventListener("click", function () {
   //   elem.disabled = false;
   // });
   console.log(appData.budget);
-  this.reset();
+  appData.reset();
 });
 
 expensesPlus.addEventListener("click", appData.addExpensesBlock);
