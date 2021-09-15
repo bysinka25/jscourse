@@ -34,6 +34,7 @@ const render = function () {
     const todoRemove = document.querySelector(".todo-remove");
     todoRemove.addEventListener("click", function () {
       todoData.splice(i, 1);
+      localStorage.removeItem("todolist", JSON.stringify(todoData));
       render();
     });
   });
