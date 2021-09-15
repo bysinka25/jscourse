@@ -31,11 +31,12 @@ const render = function () {
       localStorage.todoData = JSON.stringify(todoData);
       render();
     });
-    const todoRemove = document.querySelector(".todo-remove");
+    const todoRemove = li.querySelector(".todo-remove");
     todoRemove.addEventListener("click", function () {
       todoData.splice(i, 1);
-      localStorage.removeItem("todolist", JSON.stringify(todoData));
+      localStorage.setItem(JSON.stringify("todoList"));
       render();
+      console.log(todoRemove);
     });
   });
 };
