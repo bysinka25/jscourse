@@ -34,7 +34,7 @@ const render = function () {
     const todoRemove = li.querySelector(".todo-remove");
     todoRemove.addEventListener("click", function () {
       todoData.splice(i, 1);
-      localStorage.setItem(JSON.stringify("todoList"));
+      localStorage.setItem("todoData", JSON.stringify("todoList"));
       render();
       console.log(todoRemove);
     });
