@@ -11,19 +11,20 @@ const DomElement = function (
   this.backgroundColor = backgroundColor;
   this.fontSize = fontSize;
   this.create = function () {
-    if (this.selector === ".block") {
+    if (this.selector.substring(0, 1) == ".") {
       let div = document.createElement("div");
       div.className = this.selector;
       div.innerHTML = "А это class";
       document.body.append(div);
       div.style.cssText =
         "width: 100px; height: 200px; background-color: red; font-size: 20px;";
-    } else if (this.selector === "#block") {
+    } else if (this.selector.substring(0, 1) == "#") {
       let p = document.createElement("p");
       p.id = this.selector;
       p.innerHTML = "А это id";
       document.body.append(p);
-      p.style.cssText = "font-size: 24px";
+      p.style.cssText =
+        "width: 100px; height: 200px; background-color: green; font-size: 20px;";
     }
   };
 };
