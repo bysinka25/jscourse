@@ -64,8 +64,10 @@ class Appdata {
     inputDis.forEach((elem) => {
       elem.value = "";
       elem.disabled = false;
-      const periodSelect = document.querySelectorAll("period-select");
-      periodSelect.value = "0";
+      range.value = 0;
+      const periodA = document.querySelector(".period-amount");
+      periodA.innerHTML = "1";
+      console.log(periodA);
     });
     resultInputAll.forEach((elem) => {
       elem.value = "";
@@ -102,6 +104,7 @@ class Appdata {
     startButton.style.display = "none";
     if (salaryAmount.value !== "") {
       cancelButton.style.display = "block";
+
       if (budgetMonthValue.value > 0) {
         return;
       }
@@ -113,6 +116,9 @@ class Appdata {
       this.getAddIncome();
       this.getBudget();
       this.showResult();
+    }
+    if (salaryAmount.value === "") {
+      return;
     }
     this.showResult();
   }
@@ -208,8 +214,13 @@ class Appdata {
   calcPeriod() {
     return this.budgetMonth * range.value;
   }
+  button() {
+    if (salaryAmount.value !== "") {
+      this.start();
+    }
+  }
   eventListeners() {
-    startButton.addEventListener("click", this.start.bind(this));
+    startButton.addEventListener("click", this.button.bind(this));
     cancelButton.addEventListener("click", this.reset.bind(this));
     expensesPlus.addEventListener("click", this.addExpensesBlock.bind(this));
     incomePlus.addEventListener("click", this.addIncomeBlock.bind(this));
@@ -234,5 +245,4 @@ class Appdata {
 }
 const appdata = new Appdata();
 appdata.eventListeners();
-
 // object end  --------------------------------------------------------------
