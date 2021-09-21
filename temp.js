@@ -62,7 +62,6 @@ class Appdata {
       ".result input[type = text]"
     );
     inputDis.forEach((elem) => {
-      console.log(elem);
       elem.value = "";
       elem.disabled = false;
       const periodSelect = document.querySelectorAll("period-select");
@@ -93,16 +92,13 @@ class Appdata {
     this.expensesMonth = 0;
     cancelButton.style.display = "none";
     startButton.style.display = "block";
-    console.log(this.budget);
   }
   start() {
     const inputDis = document.querySelectorAll("input");
     let array = [inputDis];
     inputDis.forEach((elem) => {
-      console.log(elem);
       elem.disabled = true;
     });
-    console.log(array);
     startButton.style.display = "none";
     if (salaryAmount.value !== "") {
       cancelButton.style.display = "block";
@@ -117,7 +113,6 @@ class Appdata {
       this.getAddIncome();
       this.getBudget();
       this.showResult();
-      console.log(this);
     }
     this.showResult();
   }
@@ -136,7 +131,6 @@ class Appdata {
       if (itemExpenses !== "" && cashExpenses !== "") {
         this.expenses[itemExpenses] = cashExpenses;
       }
-      console.log(this);
     });
   }
   addIncomeBlock() {
@@ -146,18 +140,15 @@ class Appdata {
     if (incomeItems.length === 3) {
       incomePlus.style.display = "none";
     }
-    console.log(this);
   }
   rangeChangeValue() {
     document.querySelector(".period-amount").textContent = range.value;
-    console.log(this);
   }
   getIncome() {
     incomeItems.forEach((item) => {
       const itemIncome = item.querySelector(".income-title").value;
       const cashIncome = item.querySelector(".income-amount").value;
       this.income[itemIncome] = cashIncome;
-      console.log(this);
     });
 
     for (let key in this.income) {
@@ -171,7 +162,6 @@ class Appdata {
       if (item !== "") {
         this.addExpenses.push(item);
       }
-      console.log(this);
     });
   }
   getAddIncome() {
@@ -180,7 +170,6 @@ class Appdata {
       if (itemValue !== "") {
         this.addIncome.push(itemValue);
       }
-      console.log(this);
     });
   }
   getExpensesMonth() {
@@ -226,8 +215,6 @@ class Appdata {
     incomePlus.addEventListener("click", this.addIncomeBlock.bind(this));
     range.addEventListener("input", this.rangeChangeValue.bind(this));
 
-    console.log("расходы за месяц: ", this.expensesMonth);
-
     const arr = this.addExpenses.map(function (val) {
       const str = val.trim();
       return str[0].toUpperCase() + str.slice(1);
@@ -243,10 +230,9 @@ class Appdata {
     additionalIncomeValue.value = this.addIncome.join(", ");
     targetMonthValue.value = this.getTargetMonth();
     incomePeriodValue.value = this.calcPeriod();
-    console.log(this);
   }
 }
 const appdata = new Appdata();
 appdata.eventListeners();
-console.log(appdata);
+
 // object end  --------------------------------------------------------------
