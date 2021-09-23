@@ -232,9 +232,6 @@ class Appdata {
     console.log(selectIndex);
     if (selectIndex === "other") {
       selectIndex === +depositPercent.value;
-      if (selectIndex !== isNumber) {
-        alert("ВВЕДИТЕ ЧИСЛО!");
-      }
     } else {
       depositPercent.value === selectIndex;
     }
@@ -246,7 +243,39 @@ class Appdata {
       depositAmount.style.display = "inline-block";
       depositPercent.style.display = "inline-block";
       this.deposit = true;
-      depositBank.addEventListener("change", this.changePercent);
+      depositBank.addEventListener(
+        "change",
+        function () {
+          // if (depositPercent !== isNumber) {
+          //   alert("ВВЕДИТЕ ЧИСЛО!");
+          // }
+        },
+        this.changePercent
+      );
+      depositPercent.addEventListener(
+        "change",
+        function () {
+          if (depositPercent.value < 0) {
+            alert("Меньше 0");
+            startButton.style.display = "none";
+          } else if (depositPercent.value > 100) {
+            startButton.style.display = "none";
+            alert("больше 100");
+          } else {
+            startButton.style.display = "block";
+          }
+          while (!isNumber(depositPercent.value)) {
+            alert("Введите число!");
+            startButton.style.display = "none";
+            return;
+          }
+
+          console.log(depositPercent.value);
+          console.log(depositPercent);
+          console.log(depositPercent === isNumber(this.depositPercent));
+        },
+        this.changePercent
+      );
     } else {
       depositBank.style.display = "none";
       depositAmount.style.display = "none";
